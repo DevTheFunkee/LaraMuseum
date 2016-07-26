@@ -10,7 +10,6 @@
 
 Requisiti fondamentali, Composer installato.
 
-L'applicazione e configurata per girare su server locali, per Homestead è necessario configurare il file .env cambiando host localhost con 127.0.0.1. 
 
 Inserire nel file .env il nome del database di destinazione con username e password di phpmyadmin.
 Dopodichè per installare l'app, clonare la repo aprire il terminale nella cartella di destinazione è digitare php artisan migrate --seed.
