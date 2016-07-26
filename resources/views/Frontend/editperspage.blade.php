@@ -54,7 +54,7 @@
                 {{ Form::text('QUANTITA',null,['class' => 'form-control']) }}
             </div>
 
-                {{ Form::submit('update user?', ['class' => 'btn btn-warning']) }}
+                {{ Form::submit('Confermi Quantita?', ['class' => 'btn btn-warning']) }}
             {{Form::token()}}
             {{Form::close()}}
         </div>
