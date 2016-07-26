@@ -7,9 +7,9 @@
 [![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
 
 
-##Configurare l'Applicazione:
+#Configurare l'Applicazione:
 
-#Requisiti fondamentali, Composer installato.
+Requisiti fondamentali, Composer installato.
 
 L'applicazione e configurata per girare su server locali, per Homestead è necessario configurare il file .env cambiando host localhost con 127.0.0.1. 
 
