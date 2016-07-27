@@ -51,32 +51,30 @@ class TicketController extends Controller
     public function store(Request $request)
     {
 
-        $id = $request->input('event_id');
-        $idA = $request->input('avenue_id');
-
+        $idu = $request->input('event_id');
         $fasciaoraria = $request->input('FASCIA_ORARIA');
 
         $nFasciaOraria = DB::table('avenues')
             ->join('events', 'avenues.id', '=', 'events.avenue_id')
             ->join('tickets', 'events.id', '=', 'tickets.event_id')
-            ->where('avenues.id', '=',$idA )
-            ->where('events.id', '=',$id )
-            ->where('FASCIA_ORARIA',$fasciaoraria )
+            ->where('events.id', '=',$idu )
+            ->where('FASCIA_ORARIA', $fasciaoraria)
             ->sum('QUANTITA');
 
-
-       $capienza = DB::table('avenues')
+        $capienza = DB::table('avenues')
             ->join('events', 'avenues.id', '=', 'events.avenue_id')
-            ->where('events.id', '=',$id )
+            ->where('events.id', '=',$idu )
             ->get();
 
 
- $cap = $capienza[0]->CAPIENZA;
+        $cap = $capienza[0]->CAPIENZA;
+
+
+        $quantita   = $request->input('QUANTITA');
 
 
 
-
-        if(($nFasciaOraria) >  ($cap)){
+        if(($nFasciaOraria + $quantita) > $cap){
             return back()->with('limit','capienza limite raggiunta per questa fascia oraria');
         }else{
             $this->validate($request, Ticket::$create_validation_rules);
