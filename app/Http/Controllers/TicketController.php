@@ -54,7 +54,7 @@ class TicketController extends Controller
         $idu = $request->input('event_id');
         $fasciaoraria = $request->input('FASCIA_ORARIA');
 
-        $nFasciaOraria = DB::table('avenues')
+        $nxFasciaOraria = DB::table('avenues')
             ->join('events', 'avenues.id', '=', 'events.avenue_id')
             ->join('tickets', 'events.id', '=', 'tickets.event_id')
             ->where('events.id', '=',$idu )
@@ -74,7 +74,7 @@ class TicketController extends Controller
 
 
 
-        if(($nFasciaOraria + $quantita) > $cap){
+        if(($nxFasciaOraria + $quantita) > $cap){
             return back()->with('limit','capienza limite raggiunta per questa fascia oraria');
         }else{
             $this->validate($request, Ticket::$create_validation_rules);
@@ -144,7 +144,7 @@ class TicketController extends Controller
         $idu = $request->input('event_id');
         $fasciaoraria = $request->input('FASCIA_ORARIA');
 
-        $nFasciaOraria = DB::table('avenues')
+        $nxFasciaOraria = DB::table('avenues')
             ->join('events', 'avenues.id', '=', 'events.avenue_id')
             ->join('tickets', 'events.id', '=', 'tickets.event_id')
             ->where('events.id', '=',$idu )
@@ -164,7 +164,7 @@ class TicketController extends Controller
 
 
 
-if(($nFasciaOraria + $quantita) > $cap){
+if(($nxFasciaOraria + $quantita) > $cap){
     return back()->with('limit','capienza limite raggiunta per questa fascia oraria');
 }else{
     $ticket = Ticket::findOrFail($id);
