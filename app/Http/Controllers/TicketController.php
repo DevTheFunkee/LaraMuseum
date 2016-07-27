@@ -170,7 +170,7 @@ if(($nxFasciaOraria + $quantita) > $cap){
     $ticket = Ticket::findOrFail($id);
     $ticket->update($request->all());
 
-    return redirect()->back()->with('message','succesfully update');
+    return back()->with('message','succesfully update');
 
 }
     }
@@ -189,6 +189,6 @@ if(($nxFasciaOraria + $quantita) > $cap){
 
         Session::flash('flash_message', 'Ticket cancellato!');
 
-        return redirect()->back();
+        return back();
     }
 }
