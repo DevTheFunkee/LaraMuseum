@@ -1,7 +1,7 @@
 @extends('Frontend.master.layout')
 
 @section('title', 'Page Title')
-@include('Frontend.includes.carousel')
+
 @section('sidebar')
     @parent
 
@@ -9,6 +9,9 @@
 @endsection
 
 @section('content')
+    <div id="home">
+        <img src="{{asset('img/POP.jpg')}}" class="img-responsive" alt="home">
+    </div>
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">

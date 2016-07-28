@@ -7,3 +7,9 @@
 .Dtitle{
     padding-top: 10%;
 }
+#home{
+    position: relative;
+
+    padding-top: 5%;
+    left: 12%;
+}
