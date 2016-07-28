@@ -29,30 +29,45 @@
     <hr style="color: #000000!important;">
 
 
-<a href="{{ url('ticket' .'/'. $event->id) }}">
 
-<h2 class="post-title">   {{$event->TITOLO}} </h2>
-</a>
-<h4>Data D'Inizio </h4>
-<p> {{date('d/m/Y', strtotime($event->DATA_INIZIO)) }}</p>
-<h4>Data Di Chiusura </h4>
-<p> {{date('d/m/Y', strtotime($event->DATA_FINE))}}</p>
+    <div id="infowind">
+        <div class="container" >
+            <div class="row">
+                <div class="col-sm-6">
 
+                    <a href="{{ url('ticket' .'/'. $event->id) }}">
 
-        <h4>Prezzo al biglietto</h4>
-        <p>{{$event->PREZZO}}</p>
+                        <h2 class="post-title">   {{$event->TITOLO}} </h2>
+                    </a>
+                </div></div><div class="row">
+                <div class="col-sm-2">
+                    <h4>Data d'Inizio:</h4>
+                    <p>{{date('d/m/Y ', strtotime($event->DATA_INIZIO))}}</p>
+                </div>  <div class="col-sm-2">
+                    <h4>Fine spettacolo:</h4>
+                    <p>{{date('d/m/Y ', strtotime($event->DATA_FINE))}}</p>
+                </div>  <div class="col-sm-1">
+                    <h4>Prezzo:</h4>
+                    <p>{{$event->PREZZO}}</p>
 
+                </div></div><div class="row">
+                <div class="col-sm-2">
+                    <h4>Dove:</h4>
+                    <p>{{$event->avenue->NOME}}</p>
+                </div>  <div class="col-sm-2">
+                    <h4>Indirizzo:</h4>
+                    <p>{{$event->avenue->CITTA}} . {{$event->avenue->INDIRIZZO}}</p>
 
+                </div>
+            </div><div class="row"> <div class="col-sm-2">
 
-    <h2>Sede</h2>
-    <p>{{$event->avenue->NOME}}</p>
-    <h4>Capienza</h4>
-    <p>{{$event->avenue->CAPIENZA}}</p>
+                    <h4>Telefono:</h4>
+                    <p>{{$event->avenue->TELEFONO}}</p>
+                </div><div class="col-sm-1">
+                    <h4>Capienza</h4>
 
-    <h4>Indirizzo</h4>
-    <p>{{$event->avenue->INDIRIZZO}}</p>
-    <h4>telefono</h4>
-    <p>{{$event->avenue->TELEFONO}}</p>
+                    <p>{{$event->avenue->CAPIENZA}}</p>
+                </div></div></div></div>
 <hr>
 
 
