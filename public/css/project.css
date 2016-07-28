@@ -13,3 +13,9 @@
     padding-top: 5%;
     left: 12%;
 }
+#infowind{
+    border-left: 6px solid blue;
+    background-color: lightgrey;
+    position: relative;
+}
+

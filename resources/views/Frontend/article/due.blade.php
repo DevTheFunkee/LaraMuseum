@@ -17,97 +17,135 @@
     <div id="subh"> {{ $event->TITOLO }}</div>
 @endsection
 @section('content')
+    <div class="row">
+        <div class="col-lg-6">
+            <div id="infowind">
+                <div class="container" >
+                    <div class="row">
+                        <div class="col-sm-6">
+
+                            <h2>{{$event->TITOLO}}</h2>
+                        </div></div><div class="row">
+                        <div class="col-sm-2">
+                            <h4>Data d'Inizio:</h4>
+                            <p>{{date('d/m/Y ', strtotime($event->DATA_INIZIO))}}</p>
+                        </div>  <div class="col-sm-2">
+                            <h4>Fine spettacolo:</h4>
+                            <p>{{date('d/m/Y ', strtotime($event->DATA_FINE))}}</p>
+                        </div>  <div class="col-sm-1">
+                            <h4>Prezzo:</h4>
+                            <p>{{$event->PREZZO}}</p>
+
+                        </div></div><div class="row">
+                        <div class="col-sm-2">
+                            <h4>Dove:</h4>
+                            <p>{{$event->avenue->NOME}}</p>
+                        </div>  <div class="col-sm-2">
+                            <h4>Indirizzo:</h4>
+                            <p>{{$event->avenue->CITTA}} . {{$event->avenue->INDIRIZZO}}</p>
+
+                        </div>
+                    </div><div class="row"> <div class="col-sm-2">
+
+                            <h4>Telefono:</h4>
+                            <p>{{$event->avenue->TELEFONO}}</p>
+                        </div><div class="col-sm-1">
+                            <h4>Capienza</h4>
+
+                            <p>{{$event->avenue->CAPIENZA}}</p>
+                        </div></div></div></div>
+
+        </div><div class="col-lg-6">
+            <div id="buytik">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 col-lg-6">
+                            {{ Form::open(array('route'=>'ticket.store')) }}
+                            @if(Session::has('messages'))
+                                <div class="alert alert-info">{{ Session::get('messages') }}</div>
+                            @endif
+
+                            @if(Session::has('limit'))
+                                <div class="alert alert-danger">{{ Session::get('limit') }}</div>
+                            @endif
+
+                            <script src="{{ url('js/jquery-3.1.0.min.js') }}"></script>
+                            <script src="{{ url('js/jquery-ui.js') }}"></script>
+
+                        </div></div>
+
+                    <div class="row">
+                        <div class="col-lg-4 col-lg-2">
 
 
-    @if(Session::has('messages'))
-    <div class="alert alert-info">{{ Session::get('messages') }}</div>
-    @endif
+                            <div class="field-box">
+                                <label for="mostra_data">Sel. il giorno:</label>
+                                <input type="text" name="DATA" id="DATA">
+                            </div>
+                        </div><div class="col-lg-4 col-lg-2">
+                            <div class="form-group ticket" >
+                                <label for='sel1'>Sel. la fascia oraria:</label>
+                                <select class='form-control' id="hours" name='FASCIA_ORARIA' >
 
-    @if(Session::has('limit'))
-        <div class="alert alert-danger">{{ Session::get('limit') }}</div>
-    @endif
+                                </select>
+                            </div>
+                        </div></div>
 
-    <script src="{{ url('js/jquery.js') }}"></script>
-    <script src="{{ url('js/jquery-ui.js') }}"></script>
+                    <div class="row">
+                        <div class="col-lg-4 col-lg-2">
+                            <div class="form-group ticket">
+                                <label for='sel1'>Metodo di pagamento:</label>
+                                <select class='form-control' id="money"  name='TIPO_PAGAMENTO' >
+                                </select>
+                            </div>
+                        </div><div class="col-lg-4 col-lg-2">
 
+                            <div class="form-group ticket">
+                                <label for="sel1">Sel. la quantità:</label>
+                                <select class="form-control" id="qta" name="QUANTITA">
+                                </select>
+                            </div>
 
-    <div class="container"><div calss="row">
-    <div class="col-lg-5">   <h2>{{$event->TITOLO}}</h2>
-    {{ Form::open(array('route'=>'ticket.store')) }}
+                            <input type="hidden" class="form-control" value="" name="event_id" id="id_evento" >
 
-    <h4>Data d'Inizio:</h4>
-    <p>{{date('d/m/Y ', strtotime($event->DATA_INIZIO))}}</p>
+                            <script>
 
-    <h4>Data di fine spettacolo:</h4>
-    <p>{{date('d/m/Y H:i', strtotime($event->DATA_FINE))}}</p>
+                                document.getElementById("id_evento").value ="<?php echo $event->id?>";
+                            </script>
 
+                            <input type="hidden" class="form-control" value="" name="avenue_id" id="id_sede" >
 
-    <h4>Prezzo:</h4>
-    <p>{{$event->PREZZO}}</p>
+                            <script>
 
-    <h3>Sede:</h3>
-    <p>{{$event->avenue->NOME}}</p>
+                                document.getElementById("id_sede").value ="<?php echo $event->avenue->id?>";
+                            </script>
+                            </div></div><div class="row"><div class="col-sm-2">
+                            {{Form::submit(null,array('class'=>'btn btn-primary'))}}
+                            {{Form::token()}}
+                            {{Form::close()}}
 
-    <h4>Indirizzo:</h4>
+                        </div>
+                    </div>
+                </div>
 
-    <p>{{$event->avenue->INDIRIZZO}}</p>
-    <p>{{$event->avenue->CITTA}}</p>
+            </div>
 
-    <h4>Telefono:</h4>
-    <p>{{$event->avenue->TELEFONO}}</p>
-
-    <h4>Capienza</h4>
-
-    <p>{{$event->avenue->CAPIENZA}}</p></div>
-    <div class="col-sm-3">
-    <div class="field-box">
-    <label for="mostra_data">Seleziona il giorno:</label>
-    <input type="text" name="DATA" id="DATA">
+            </div>
     </div>
 
-    <div class="form-group ticket" >
-    <label for='sel1'>Seleziona la fascia oraria:</label>
-    <select class='form-control' id="hours" name='FASCIA_ORARIA' >
-
-    </select>
-    </div>
-
-    <div class="form-group ticket">
-    <label for='sel1'>Seleziona il metodo di pagamento:</label>
-    <select class='form-control' id="money"  name='TIPO_PAGAMENTO' >
-    </select>
-    </div>
-
-
-    <div class="form-group ticket">
-    <label for="sel1">Seleziona la quantità:</label>
-    <select class="form-control" id="qta" name="QUANTITA">
-    </select>
-    </div>
-
-    <input type="hidden" class="form-control" value="" name="event_id" id="id_evento" >
-
-    <script>
-
-    document.getElementById("id_evento").value ="<?php echo $event->id?>";
-    </script>
-
-    <input type="hidden" class="form-control" value="" name="avenue_id" id="id_sede" >
-
-    <script>
-
-    document.getElementById("id_sede").value ="<?php echo $event->avenue->id?>";
-    </script>
 
 
 
-    </div></div></div>
 
 
 
-    {{Form::submit(null,array('class'=>'btn btn-primary'))}}
-    {{Form::token()}}
-    {{Form::close()}}
+
+
+
+
+
+
+
 
     <?php  $meno =  strtotime($event->DATA_INIZIO); ?>
     <br>

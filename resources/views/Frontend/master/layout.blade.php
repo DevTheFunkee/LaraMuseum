@@ -23,7 +23,7 @@
     <![endif]-->
     <link href="{{ url('css/font-awesome.min.css') }}" rel="stylesheet" />
     <link href="{{ url('css/project.css') }}" rel="stylesheet" />
-    <link href="{{ url('css/jquery-ui.min.css') }}" rel="stylesheet" />
+    <link href="{{ url('css/jquery-ui.css') }}" rel="stylesheet" />
 
 </head>
 
