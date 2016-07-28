@@ -31,9 +31,9 @@
             {{ Form::model($bil,['route'=>['ticket.update', $id], 'method' =>'patch']) }}
             <h1>{{$bi->TITOLO }}</h1>
             <h2>{{$bi->NOME }}</h2>
-            <h2>{{$bi->CITTA }}</h2>
-            <h2>{{$bi->INDIRIZZO }}</h2>
-            <h2>{{$bi->DATA }}</h2>
+            <h3>{{$bi->CITTA }}</h3>
+            <h3>{{$bi->INDIRIZZO }}</h3>
+            <h4>{{date('d/m/Y ', strtotime($bi->DATA)) }}</h4>
                 <h1>Quantita:</h1>
             <h2>{{$bi->QUANTITA }}</h2>
 
@@ -50,7 +50,7 @@
                     document.getElementById("FASCIA_ORARIA").value ="<?php echo $bi->FASCIA_ORARIA?>";
                 </script>
             <div class="form-group">
-                {{ Form::label('QUANTITA','Quantita') }}
+                {{ Form::label('QUANTITA','Nuova quantita?') }}
                 {{ Form::text('QUANTITA',null,['class' => 'form-control']) }}
             </div>
 
