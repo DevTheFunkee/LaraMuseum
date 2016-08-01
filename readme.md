@@ -13,9 +13,19 @@ LaraMuseum è un complesso sistema di booking per eventi e spettacoli, sviluppat
 
 Requisiti fondamentali, Composer installato.
 
-
 Inserire nel file .env il nome del database di destinazione con username e password di phpmyadmin.
-Dopodichè per installare l'app, clonare la repo aprire il terminale nella cartella di destinazione è digitare php artisan migrate --seed.
+
+Dopodichè per installare l'app, clonare la repo aprire il terminale nella cartella di destinazione è digitare
+
+composer install
+
+php artisan key:generate
+
+php artisan migrate --seed
+
+php artisan vendor:publish
+
+php artisan serve.
 
 ## Official Documentation
 
